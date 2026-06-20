@@ -1,66 +1,58 @@
-appId: net.toonflow.www
-productName: ToonFlow
-copyright: Copyright © 2026
-
+﻿appId: com.quanzhenpai.creative-engine
+productName: "全帧派创作引擎"
+copyright: "Copyright © 2026 全帧派影视科技"
 directories:
-  output: dist
-  buildResources: build
-
+  output: release
+  buildResources: public
 files:
   - build/**/*
-  - scripts/web/**/*
-  - env/**/*
-  - package.json
+  - data/**/*
   - node_modules/**/*
-  - "!node_modules/**/*.{md,ts,map}"
-  - "!node_modules/**/LICENSE*"
-  - "!node_modules/**/{README,readme}*"
-  - "!**/*.d.ts"
-  - "!src/**/*"
-  - "!scripts/**/*.ts"
-  - "!scripts/*.ts"
-
-asar: true
-asarUnpack:
-  - "**/node_modules/sharp/**"
-  - "**/node_modules/@img/**"
-
+  - public/**/*
+  - package.json
+  - "!node_modules/@types/**"
+  - "!node_modules/.cache/**"
+  - "!node_modules/*/{test,tests,__tests__}/**"
 extraResources:
-  - from: data
-    to: data
-    filter:
-      - "**/*"
-      - "!db2.sqlite"
-      - "!logs/**"
-      - "!oss/**"
-
+  - from: data/skills
+    to: skills
+  - from: data/models
+    to: models
+  - from: public/guo-3d-assets
+    to: guo-3d-assets
+asar: true
+compression: maximum
 win:
   target:
     - target: nsis
-  icon: ./scripts/logo.ico
-
+      arch: [x64]
+  icon: public/app-icon.png
+  artifactName: "${productName}-${version}-win-x64.${ext}"
 nsis:
   oneClick: false
   allowToChangeInstallationDirectory: true
-  perMachine: true
-  shortcutName: ${productName}
-  artifactName: ${productName}-${version}-win-${arch}-setup.${ext}
-  installerIcon: './scripts/logo.ico'
-  uninstallerIcon: './scripts/logo.ico'
-  include: ./scripts/installer.nsh
-
+  installerIcon: public/app-icon.png
+  uninstallerIcon: public/app-icon.png
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: "全帧派创作引擎"
 mac:
   target:
     - target: dmg
-  icon: ./scripts/logo.icns
-  category: public.app-category.developer-tools
-  artifactName: ${productName}-${version}-mac-${arch}.${ext}
-
+      arch: [x64, arm64]
+  icon: public/app-icon.png
+  artifactName: "${productName}-${version}-mac-${arch}.${ext}"
+  category: public.app-category.creative
 linux:
   target:
     - target: AppImage
-  icon: ./scripts/logo.png
-  artifactName: ${productName}-${version}-linux-${arch}.${ext}
-  category: Development
-
-publish: null
+      arch: [x64]
+    - target: deb
+      arch: [x64]
+  icon: public/app-icon.png
+  artifactName: "${productName}-${version}-linux-${arch}.${ext}"
+  category: AudioVideo
+publish:
+  provider: github
+  owner: baiyi878290
+  repo: quanzhenpai-creative-engine

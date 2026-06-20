@@ -1,80 +1,30 @@
-﻿// 全帧派引擎桥接客户端
-// 连接 Python 引擎 (127.0.0.1:14500) 和 Vercel AI SDK
+﻿const ENGINE_URL = "http://127.0.0.1:14500";
 
-const ENGINE_BASE = "http://127.0.0.1:14500";
+export class QuanzhenpaiEngineClient {
+  private baseUrl: string;
+  constructor(baseUrl: string = ENGINE_URL) { this.baseUrl = baseUrl; }
 
-export interface EngineStatus {
-  version: string;
-  running: boolean;
-  pipeline: { seedance: boolean; gpt_image: boolean };
-}
-
-export interface ShotPlan {
-  shots: Array<{
-    shotNumber: string;
-    shotSize: string;
-    angle: string;
-    movement: string;
-    duration: number;
-    prompt: string;
-    visualDescription: string;
-  }>;
-  totalDuration: number;
-}
-
-export interface GenerateResult {
-  shotId: string;
-  imageUrl: string;
-  prompt: string;
-}
-
-export interface KnowledgeResult {
-  title: string;
-  content: string;
-  score: number;
-}
-
-export class QuanZhenPaiEngine {
-  async status(): Promise<EngineStatus> {
-    try {
-      const resp = await fetch(`${ENGINE_BASE}/api/status`);
-      return resp.json();
-    } catch { return { version: "unknown", running: false, pipeline: { seedance: false, gpt_image: false } };
-    }
+  async status() { const r = await fetch(`${this.baseUrl}/api/status`); return r.json(); }
+  async analyzeScript(script: string) {
+    const r = await fetch(`${this.baseUrl}/api/pipeline/analyze`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({script}) });
+    return r.json();
   }
-
-  async analyzeScript(script: string): Promise<ShotPlan> {
-    const resp = await fetch(`${ENGINE_BASE}/api/pipeline/analyze`, {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ script }),
-    });
-    return resp.json();
+  async oneClickPipeline(script: string, provider?: string) {
+    const r = await fetch(`${this.baseUrl}/api/pipeline/one-click`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({script,provider}) });
+    return r.json();
   }
-
-  async generateShot(prompt: string, duration: number): Promise<GenerateResult> {
-    const resp = await fetch(`${ENGINE_BASE}/api/pipeline/generate`, {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt, duration }),
-    });
-    return resp.json();
+  async searchKnowledge(query: string) {
+    const r = await fetch(`${this.baseUrl}/api/knowledge/search`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({query}) });
+    return r.json();
   }
-
-  async searchKnowledge(query: string): Promise<KnowledgeResult[]> {
-    const resp = await fetch(`${ENGINE_BASE}/api/knowledge/search`, {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query }),
-    });
-    return resp.json();
+  async chat(message: string, reset=false) {
+    const r = await fetch(`${this.baseUrl}/api/chat`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({message,reset}) });
+    return r.json();
   }
-
-  async chat(message: string, reset = false): Promise<string> {
-    const resp = await fetch(`${ENGINE_BASE}/api/chat`, {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ message, reset }),
-    });
-    const data = await resp.json();
-    return data.response || data.message || JSON.stringify(data);
+  async generateImage(prompt: string, opts?: { width?:number; height?:number; provider?:string }) {
+    const r = await fetch(`${this.baseUrl}/api/generate/image`, { method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({prompt,...opts}) });
+    return r.json();
   }
 }
 
-export const quanzhenpai = new QuanZPaiEngine();
+export const engineClient = new QuanzhenpaiEngineClient();

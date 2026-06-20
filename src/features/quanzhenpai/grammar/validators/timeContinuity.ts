@@ -1,24 +1,25 @@
-﻿// 时间连续验证器
-import { Shot, ValidationResult } from "../types";
+﻿import type { Shot } from "../types";
+import type { ValidationResult, Violation } from "./axisRule";
 
 export function validateTimeContinuity(shots: Shot[]): ValidationResult {
-  const violations = [];
-  for (let i = 1; i < shots.length; i++) {
-    const curr = shots[i];
-    if (curr.duration < 0.5 && curr.shotSize === "extreme_wide") {
-      violations.push({
-        type: "SHOT_TOO_SHORT", severity: "WARNING", shotIndex: i,
-        message: `大远景 ${curr.duration}s 过短，观众来不及看清环境`,
-        suggestion: "大远景建议 >= 2s",
-      });
+  const v: Violation[] = [];
+  const flashback = /之前|回忆|过去|当时|以前|earlier|ago|remember|past/i;
+  const flashforward = /之后|将来|未来|多年后|later|after|future|next/i;
+  for (let i=1;i<shots.length;i++) {
+    const prev=shots[i-1], curr=shots[i];
+    if (flashback.test(curr.visualDescription||curr.notes||"")) {
+      if (curr.transition!=="dissolve" && curr.transition!=="fade_to_black" && curr.transition!=="fade_to_white") {
+        v.push({ type:"FLASHBACK_NO_TRANSITION", severity:"WARNING", shotIndex:i, message:`闪回缺少时间转换标记`, suggestion:"使用dissolve/fade_to_black/fade_to_white转场" });
+      }
     }
-    if (curr.duration > 15 && curr.shotSize === "extreme_close") {
-      violations.push({
-        type: "SHOT_TOO_LONG", severity: "WARNING", shotIndex: i,
-        message: `大特写 ${curr.duration}s 过长，保持紧张感建议 < 5s`,
-        suggestion: "切到其他角度或插入反打镜头",
-      });
+    if (flashforward.test(curr.visualDescription||curr.notes||"")) {
+      if (curr.transition!=="dissolve" && curr.transition!=="fade_to_black") {
+        v.push({ type:"FLASHFORWARD_NO_TRANSITION", severity:"WARNING", shotIndex:i, message:`闪前缺少时间转换标记`, suggestion:"使用dissolve/fade_to_black转场" });
+      }
+    }
+    if (curr.transition==="dissolve" && prev.visualDescription===curr.visualDescription) {
+      v.push({ type:"DISSOLVE_SAME_SCENE", severity:"INFO", shotIndex:i, message:"叠化但画面描述相同，可能不是时间流逝", suggestion:"同场景过渡建议用硬切" });
     }
   }
-  return { valid: violations.length === 0, violations };
+  return { valid: v.filter(x=>x.severity==="ERROR").length===0, violations: v };
 }

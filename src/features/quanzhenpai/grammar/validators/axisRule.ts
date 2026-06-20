@@ -1,37 +1,24 @@
-﻿// 180度轴线规则验证器
-import { Shot, ValidationResult } from "../types";
-
-function isAxisCrossing(prev: Shot, curr: Shot): boolean {
-  const oppositePairs = [
-    ["pan_left", "pan_right"], ["track_left", "track_right"],
-    ["low_angle", "high_angle"], ["dolly_in", "dolly_out"]
-  ];
-  return oppositePairs.some(([a, b]) =>
-    (prev.movement === a && curr.movement === b) ||
-    (prev.movement === b && curr.movement === a)
-  );
-}
-
-function hasAxisMotivation(shots: Shot[], index: number): boolean {
-  const curr = shots[index];
-  if (curr.transition === "fade_in" || curr.transition === "fade_out" || curr.transition === "dissolve") return true;
-  if (curr.emotion >= 7 && shots[index - 1]?.emotion <= 4) return true;
-  if (curr.shotSize === "extreme_wide" || curr.shotSize === "wide") return true;
-  return false;
-}
+﻿import type { Shot } from "../types";
+export interface ValidationResult { valid: boolean; violations: Violation[]; }
+export interface Violation { type: string; severity: "ERROR"|"WARNING"|"INFO"; shotIndex: number; message: string; suggestion: string; }
 
 export function validateAxisRule(shots: Shot[]): ValidationResult {
-  const violations = [];
-  for (let i = 1; i < shots.length; i++) {
-    if (isAxisCrossing(shots[i - 1], shots[i]) && !hasAxisMotivation(shots, i)) {
-      violations.push({
-        type: "AXIS_CROSSING",
-        severity: "ERROR",
-        shotIndex: i,
-        message: `镜 ${shots[i].shotNumber} 越轴`,
-        suggestion: "添加时间跳跃/空间转换/情绪转折作为越轴动机，或插入建立镜头过渡",
-      });
+  const v: Violation[] = [];
+  const leftAngles = ["low_angle","dutch"];
+  const rightAngles = ["high_angle","aerial","worm_eye"];
+  const neutral = ["eye_level"];
+  for (let i=1;i<shots.length;i++) {
+    const prev = shots[i-1]; const curr = shots[i];
+    const prevSide = neutral.includes(prev.angle) ? "neutral" : leftAngles.includes(prev.angle) ? "left" : "right";
+    const currSide = neutral.includes(curr.angle) ? "neutral" : leftAngles.includes(curr.angle) ? "left" : "right";
+    if (prevSide!=="neutral" && currSide!=="neutral" && prevSide!==currSide) {
+      const hasMotivation = curr.vfx.includes("过渡") || curr.notes?.includes("动机") || Math.abs(curr.emotion-prev.emotion)>=3 || ["dissolve","fade_to_black","fade_to_white"].includes(curr.transition) || /(进|出|入|离开)画|enter|exit|leave/i.test(curr.visualDescription||"");
+      if (!hasMotivation) {
+        v.push({ type:"AXIS_CROSSING_NO_MOTIVATION", severity:"ERROR", shotIndex:i, message:`${curr.shotNumber} 越轴(从${prev.angle}到${curr.angle})，缺少动机`, suggestion:"添加空间转换/时间跳跃/情绪转折/特殊转场作为越轴动机" });
+      } else {
+        v.push({ type:"AXIS_CROSSING_WITH_MOTIVATION", severity:"INFO", shotIndex:i, message:`${curr.shotNumber} 越轴(动机已检测)`, suggestion:"越轴动机已确认，此操作有效" });
+      }
     }
   }
-  return { valid: violations.length === 0, violations };
+  return { valid: v.filter(x=>x.severity==="ERROR").length===0, violations: v };
 }

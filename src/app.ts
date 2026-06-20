@@ -1,4 +1,4 @@
-// import "./logger";
+﻿// import "./logger";
 import "./err";
 import "./env";
 import express, { Request, Response, NextFunction } from "express";
@@ -213,3 +213,4 @@ export function closeServe(): Promise<void> {
 
 const isElectron = typeof process.versions?.electron !== "undefined";
 if (!isElectron) startServe();
+

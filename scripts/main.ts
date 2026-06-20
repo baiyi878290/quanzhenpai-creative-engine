@@ -1,4 +1,4 @@
-import { app, BrowserWindow, protocol, systemPreferences } from "electron";
+﻿import { app, BrowserWindow, protocol, systemPreferences } from "electron";
 import path from "path";
 import fs from "fs";
 import Module from "module";
@@ -123,6 +123,7 @@ let mainWindow: BrowserWindow | null = null;
 function createMainWindow(): Promise<void> {
   return new Promise((resolve) => {
     const win = new BrowserWindow({
+    webPreferences: { preload: path.join(__dirname, 'preload.js') },
       width: 1000,
       height: 700,
       minWidth: 800,
@@ -286,3 +287,4 @@ app.on("activate", () => {
 app.on("before-quit", async (event) => {
   if (closeServeFn) await closeServeFn();
 });
+

@@ -1,0 +1,610 @@
+{
+  "active_library_id": "system",
+  "libraries": [
+    {
+      "id": "system",
+      "name": "系统提示词库",
+      "type": "prompt",
+      "readonly": false,
+      "system": true,
+      "categories": [
+        {
+          "id": "view",
+          "name": "视角"
+        },
+        {
+          "id": "storyboard",
+          "name": "分镜"
+        },
+        {
+          "id": "character",
+          "name": "角色"
+        },
+        {
+          "id": "product",
+          "name": "产品"
+        },
+        {
+          "id": "lighting",
+          "name": "光影"
+        },
+        {
+          "id": "custom",
+          "name": "我的"
+        }
+      ],
+      "items": [
+        {
+          "id": "builtin_md_1",
+          "name": "多机位九宫格",
+          "category": "character",
+          "scene": "同一主体/场景，9个不同机位/角度同时呈现，用于角色多角度参考、产品展示、空间勘测",
+          "positive": "A multi-camera angle reference sheet in 3x3 grid layout, showing [主体] from 9 different perspectives simultaneously: top-left front view, top-center 3/4 front view, top-right side profile, middle-left low angle, middle-center eye-level straight-on, middle-right high angle, bottom-left back view, bottom-center 3/4 back view, bottom-right top-down overhead view. [主体详细描述]. Consistent lighting across all 9 frames, uniform light warm gray background color F0EDE8, subjects softly blending with background with natural edge transition, no hard edges no white halo no light bleed, professional studio photography, clean grid layout with thin white dividers between frames, character consistency maintained across all angles, absolutely no visible numbers text labels frame counters corner marks or annotations anywhere on the image",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, readable text, font, typography, grid numbers, sequence markers, page numbers, index, hard edge, glowing edge, white halo, light bleed, overexposed edge, cutout look, pasted on background, floating subject, disconnected shadow, pure white background, stark white, cold gray, bad anatomy, distorted face, extra fingers, deformed hands, inconsistent character design, lighting mismatch between frames, blurry, low quality, cropped, out of frame",
+          "params": {
+            "Midjourney": "`--ar 1:1 --style raw --s 50`",
+            "即梦/可灵": "直接粘贴，开启「参考图」锁一致性",
+            "Flux": "配合 `add_detail` LoRA，CFG 3.5-5.0"
+          },
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "builtin_md_2",
+          "name": "多机位九宫格4K",
+          "category": "storyboard",
+          "scene": "高分辨率版本的多机位九宫格，用于印刷级输出、大屏展示、精细材质参考",
+          "positive": "Ultra high resolution multi-camera angle reference sheet in 3x3 grid layout, 4K quality, showing [主体] from 9 different perspectives simultaneously: top-left front view, top-center 3/4 front view, top-right side profile, middle-left low angle, middle-center eye-level straight-on, middle-right high angle, bottom-left back view, bottom-center 3/4 back view, bottom-right top-down overhead view. [主体详细描述]. Consistent cinematic lighting across all 9 frames, uniform light warm gray background color F0EDE8, subjects softly blending with background with natural edge transition, no hard edges no white halo no light bleed, professional studio photography with medium format film aesthetic, clean grid layout with thin white dividers between frames, character consistency maintained across all angles, fine organic film grain, zero digital sharpening, absolutely no visible numbers text labels frame counters corner marks or annotations anywhere on the image",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, readable text, font, typography, grid numbers, sequence markers, page numbers, index, hard edge, glowing edge, white halo, light bleed, overexposed edge, cutout look, pasted on background, floating subject, disconnected shadow, pure white background, stark white, cold gray, bad anatomy, distorted face, extra fingers, deformed hands, inconsistent character design, lighting mismatch between frames, blurry, low quality, cropped, out of frame, digital sharpening, oversharpened, plastic skin, over-smoothing",
+          "params": {
+            "Midjourney": "`--ar 1:1 --style raw --s 50 --q 2`",
+            "即梦/可灵": "选择「高清」或「4K」模式",
+            "Flux": "开启 Tiled VAE 或 hires fix"
+          },
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "builtin_md_3",
+          "name": "剧情推演四宫格",
+          "category": "storyboard",
+          "scene": "同一事件的4个连续阶段/情绪递进，用于故事板预览、情绪弧线设计、叙事节奏测试",
+          "positive": "A 4-panel storyboard sequence in 2x2 grid, showing narrative progression of [事件/场景]: top-left [阶段1描述], top-right [阶段2描述], bottom-left [阶段3描述], bottom-right [阶段4描述]. Consistent character design across all panels, coherent lighting and color palette, uniform light warm gray background color F0EDE8, subjects softly blending with background with natural edge transition, no hard edges no white halo no light bleed, cinematic composition, emotional arc from [情绪A] to [情绪B], film grain texture, clean thin white grid dividers, absolutely no visible numbers text labels frame counters corner marks or annotations anywhere on the image",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, readable text, font, typography, grid numbers, sequence markers, page numbers, index, hard edge, glowing edge, white halo, light bleed, overexposed edge, cutout look, pasted on background, floating subject, disconnected shadow, pure white background, stark white, cold gray, bad anatomy, distorted face, extra fingers, deformed hands, inconsistent character design, lighting mismatch between frames, discontinuous action, jump cut feel, blurry, low quality, cropped, out of frame",
+          "params": {
+            "Midjourney": "`--ar 1:1 --style raw --s 75`",
+            "即梦/可灵": "直接粘贴，建议分镜时先写情绪词再填场景",
+            "Flux": "配合 `film grain` LoRA 增强故事板质感"
+          },
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "builtin_md_4",
+          "name": "角色脸部三视图",
+          "category": "character",
+          "scene": "角色面部正面/侧面/四分之三侧面的设定参考，用于Actor ID锁定、表情一致性控制",
+          "positive": "Character face reference sheet, three views side by side in single row: left panel front view straight-on, center panel 3/4 angle view, right panel side profile view. [角色面部详细描述]. Consistent lighting from 45-degree top-side across all three views, light warm gray background color F0EDE8, subjects softly blending with background with natural edge transition, no hard edges no white halo no light bleed, neutral clean backdrop, professional character design sheet, clean linework, subtle skin texture, identical facial features maintained across all angles, absolutely no visible numbers text labels frame counters corner marks or annotations anywhere on the image",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, readable text, font, typography, grid numbers, sequence markers, page numbers, index, hard edge, glowing edge, white halo, light bleed, overexposed edge, cutout look, pasted on background, floating subject, disconnected shadow, pure white background, stark white, cold gray, bad anatomy, distorted face, asymmetrical eyes, crossed eyes, extra fingers, deformed hands, inconsistent facial features between panels, lighting mismatch, blurry, low quality, cropped, out of frame",
+          "params": {
+            "Midjourney": "`--ar 16:9 --style raw --s 50`",
+            "即梦/可灵": "上传参考图锁定Actor ID后使用",
+            "Flux": "开启面部修复 + 一致性采样器"
+          },
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "builtin_md_5",
+          "name": "产品三视图",
+          "category": "product",
+          "scene": "产品设计的正面/侧面/顶面展示，用于工业设计、电商详情、技术文档",
+          "positive": "Product design reference sheet, three orthographic views in single row: front view, side view, top view. [产品详细描述]. Light warm gray background color F0EDE8, products softly blending with background with natural edge transition, no hard edges no white halo no light bleed, studio lighting with soft shadows, technical drawing aesthetic, precise proportions, material texture visible, no perspective distortion, professional product photography, absolutely no visible numbers text labels frame counters corner marks or annotations anywhere on the image",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, readable text, font, typography, grid numbers, sequence markers, page numbers, index, hard edge, glowing edge, white halo, light bleed, overexposed edge, cutout look, pasted on background, floating subject, disconnected shadow, pure white background, stark white, cold gray, distorted proportions, perspective distortion, blurry, low quality, cropped, out of frame, cluttered background, random objects, inconsistent material texture between views",
+          "params": {
+            "Midjourney": "`--ar 16:9 --style raw --s 50`",
+            "即梦/可灵": "浅暖灰背景建议加 `--no gradient background`",
+            "Flux": "配合 `product photography` LoRA"
+          },
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "builtin_md_6",
+          "name": "25宫格连贯分镜",
+          "category": "storyboard",
+          "scene": "完整场景/动作的25帧连续分镜，5×5网格承载9个叙事节拍，用于电影分镜预览、动作连贯性测试、Seedance分段参考",
+          "positive": "A 5x5 cinematic storyboard grid, 25 sequential frames showing continuous narrative flow of [主体/场景/动作], naturally divided into 9 story beats progressing through beginning, development, escalation, twist, climax, and resolution. Scene transitions conveyed purely through visual continuity and character motion, absolutely no visible numbers, text, labels, frame counters, corner marks, or annotations anywhere on the image. Consistent character and environment across all 25 frames, smooth motion continuity between adjacent frames, uniform cinematic lighting and color palette, light warm gray background color F0EDE8, subjects softly blending with background with natural edge transition, no hard edges no white halo no light bleed, varied shot progression from wide to close-up, professional film storyboard aesthetic, subtle film grain, clean thin white grid dividers",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, readable text, font, typography, grid numbers, sequence markers, page numbers, index, hard edge, glowing edge, white halo, light bleed, overexposed edge, cutout look, pasted on background, floating subject, disconnected shadow, pure white background, stark white, cold gray, bad anatomy, distorted face, extra fingers, deformed hands, inconsistent character design, lighting mismatch between frames, discontinuous action, jump cut feel, blurry, low quality, cropped, out of frame, different hairstyle between frames, different clothing between frames",
+          "params": {
+            "Midjourney": "`--ar 1:1 --style raw --s 75 --q 2`",
+            "即梦/可灵": "建议先测试单格效果再生成25格，分段生成更可控",
+            "Flux": "开启 `Batch count: 1`，CFG 4.0，配合 `storyboard` LoRA"
+          },
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "builtin_md_7",
+          "name": "电影级光影校正",
+          "category": "lighting",
+          "scene": "同一场景在不同光影条件下的对比展示，用于灯光方案测试、色调选择、情绪对照",
+          "positive": "Cinematic lighting comparison sheet, 6 panels showing the same [主体/场景] under different lighting conditions: top-left golden hour warm backlight, top-center overcast soft diffused light, top-right neon night city light, bottom-left harsh midday direct sun, bottom-center Rembrandt 45-degree side light with triangle shadow, bottom-right dramatic low-key chiaroscuro. Consistent composition and subject across all panels, only lighting changes, light warm gray background color F0EDE8, subjects softly blending with background with natural edge transition, no hard edges no white halo no light bleed, professional cinematography reference, absolutely no visible numbers text labels frame counters corner marks or annotations anywhere on the image",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, readable text, font, typography, grid numbers, sequence markers, page numbers, index, hard edge, glowing edge, white halo, light bleed, overexposed edge, cutout look, pasted on background, floating subject, disconnected shadow, pure white background, stark white, cold gray, inconsistent subject between panels, different pose between panels, different costume between panels, cluttered background, blurry, low quality, cropped, out of frame",
+          "params": {
+            "Midjourney": "`--ar 3:2 --style raw --s 50`",
+            "即梦/可灵": "适合作为「Talk to Edit」的光影参考基底图",
+            "Flux": "配合 `cinematic lighting` LoRA"
+          },
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "builtin_md_8",
+          "name": "角色设定参考表（胸口特写+全身三视图）",
+          "category": "character",
+          "scene": "角色一致性设定参考：左侧1/3脸部大特写锚定面部，右侧2/3三格横排全身三视图（正/侧/背）锚定服装与身形，用于Actor ID锁定、服装一致性控制、Seedance Canvas故事板",
+          "positive": "Character reference sheet, left-right split layout: left one-third area is chest-up close-up front view portrait (shoulder-up framing, extreme facial detail clarity, gentle natural expression, bright eyes looking straight at camera, realistic skin texture with visible pores and subtle imperfections, refined classical makeup); right two-thirds area is three full-body views in horizontal row, from left to right: full-body front standing pose (arms hanging naturally, feet together, complete front costume and body proportions), full-body side profile view (weight slightly shifted, waist-hip curve and silhouette visible, complete side costume and footwear), full-body back view (complete back neckline, hairstyle from behind, back costume details). Consistent front-top-side lighting across all panels, soft diffused light quality, light warm gray background color F0EDE8, subjects softly blending with background with natural edge transition, no hard edges no white halo no light bleed, identical character design, costume, hairstyle and accessories across all panels, professional character design sheet style, clean edges, accurate proportions, material texture visible from all angles, absolutely no visible numbers, text, labels, frame counters, corner marks or annotations anywhere on the image",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, readable text, font, typography, grid numbers, sequence markers, page numbers, index, hard edge, glowing edge, white halo, light bleed, overexposed edge, cutout look, pasted on background, floating subject, disconnected shadow, pure white background, stark white, cold gray, dividing line labels, panel markers, bad anatomy, distorted face, extra fingers, deformed hands, inconsistent character design, lighting mismatch between frames, different hairstyle between panels, different clothing between panels, blurry, low quality, cropped, out of frame, asymmetrical eyes, crossed eyes, plastic skin, over-smoothing, textureless skin, uniform skin tone, digital sharpening, filter look, CG look, retouched, airbrushed, multiple heads, mutated limbs, floating limbs, disconnected limbs, uneven panel sizes, broken layout",
+          "params": {
+            "Midjourney": "`--ar 16:9 --style raw --s 50 --q 2`",
+            "即梦/可灵": "上传此图作为Actor ID参考，Canvas锁脸首选",
+            "Flux": "开启面部一致性 + 服装一致性双重采样"
+          },
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "builtin_md_9",
+          "name": "6种基础表情胸像（2×3六宫格）",
+          "category": "character",
+          "scene": "同一角色六种基础表情同时呈现，用于表情一致性控制、情绪基准设定、Seedance Talk to Edit表情参考",
+          "positive": "Character expression reference sheet in 2x3 grid layout, six basic expressions of the same character: top row from left to right: calm neutral expression (relaxed face, eyes looking straight ahead, lips naturally closed), gentle smile (corners of mouth slightly raised, eyes with smile lines, warm and approachable), joyful laugh (eyebrows and eyes curved upward, mouth open showing teeth, exuberant happiness); bottom row from left to right: sad tearful expression (slight furrow between brows, downturned outer eye corners, tears welling in eyes about to fall), angry stern expression (brows tightly locked, sharp piercing eyes with pressure, jaw slightly set), surprised astonished expression (eyes wide open, eyebrows raised high, mouth slightly open in O shape). All six expressions are chest-up close-up portraits of the same character, shoulder-up framing, extreme facial detail clarity, realistic skin texture preserved, no additional light source, light warm gray background color F0EDE8, subjects softly blending with background with natural edge transition, no hard edges no white halo no light bleed, identical character styling, hairstyle, makeup and accessories across all six panels, only facial expression changes, professional character expression sheet style, clean edges, absolutely no visible numbers, text, labels, frame counters, corner marks or annotations anywhere on the image",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, readable text, font, typography, grid numbers, sequence markers, page numbers, index, expression name labels, emotion text, hard edge, glowing edge, white halo, light bleed, overexposed edge, cutout look, pasted on background, floating subject, disconnected shadow, pure white background, stark white, cold gray, bad anatomy, distorted face, extra fingers, deformed hands, inconsistent character design, different hairstyle between panels, different clothing between panels, lighting mismatch between panels, blurry, low quality, cropped, out of frame, asymmetrical eyes, crossed eyes, plastic skin, over-smoothing, textureless skin, uniform skin tone, digital sharpening, filter look, CG look, retouched, airbrushed, multiple heads, mutated limbs, floating limbs, disconnected limbs, uneven panel sizes, broken layout, extra rows, extra columns, missing panel, shadows on face, directional light, dramatic lighting, colored light",
+          "params": {
+            "Midjourney": "`--ar 3:2 --style raw --s 50`",
+            "即梦/可灵": "直接粘贴，建议开启「参考图」锁角色一致性",
+            "Flux": "配合 `add_detail` + 面部一致性采样器"
+          },
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "builtin_md_10",
+          "name": "360全景图",
+          "category": "view",
+          "scene": "用于生成360全景、VR全景、可左右循环拼接的空间视角图，适合室内空间、展厅、场景漫游、环境概念设计；封闭场景需要具备合理出入口。",
+          "positive": "生成一个720度的全景VR图，左右边缘100%像素级无缝衔接，可无限循环拼接；上下极点(南北极)自然过渡，无明显断层或拉伸，场景一致性，以及场景的逻辑性，封闭场景需要有门",
+          "negative": "seam, visible seam, hard seam, broken panorama, discontinuous edge, mismatched left and right edges, distorted poles, stretched ceiling, stretched floor, warped horizon, inconsistent scene logic, impossible space, no exit in closed room, text, letters, labels, watermark, logo, blurry, low quality",
+          "params": {},
+          "created_at": 1780690755103,
+          "updated_at": 1780690755103
+        },
+        {
+          "id": "film_character_sheet_1",
+          "name": "角色设定板-左右分割式",
+          "category": "character",
+          "scene": "左侧高质量半身肖像，右侧模块化信息网格（三视图+五官特写），真实质感",
+          "positive": "Character reference sheet with left-right split layout: LEFT SIDE - High quality character half-body portrait of [角色描述], [服装详细描述], [发型描述], [表情], [光影效果], cinematic, photorealistic, white clean background. RIGHT SIDE - Modular character information system with thin border grid layout, top section showing full body three-view (front, side, back) with unified proportions and standardized character identity reference, bottom section showing close-up facial feature details. Professional character design sheet, unified color system, high information density layout, realistic texture, cinematic lighting, realistic skin texture, white clean background, ultra high detail, absolutely no text or labels on the image",
+          "negative": "text, labels, letters, numbers, watermarks, signatures, logos, blurry, low quality, distorted, deformed, bad anatomy, cropped, ugly",
+          "params": {
+            "即梦/可灵": "上传参考图锁定角色一致性",
+            "Midjourney": "--ar 9:16 --style raw --s 50"
+          },
+          "created_at": 1781476800000,
+          "updated_at": 1781476800000
+        },
+        {
+          "id": "film_character_sheet_2",
+          "name": "角色设定板-九宫格多角度",
+          "category": "character",
+          "scene": "3×3网格，9个不同角度同时呈现，用于角色多角度参考",
+          "positive": "Character reference sheet in 3x3 grid layout, 9 different perspectives of [角色]: front view, 3/4 front view, side profile, low angle, eye-level, high angle, back view, 3/4 back view, overhead view. [角色描述]. [服装]. [发型]. Consistent lighting across all 9 frames, uniform light warm gray background color F0EDE8, subjects softly blending with background with natural edge transition, no hard edges no white halo no light bleed, professional character design sheet, clean grid layout with thin white dividers between frames, character consistency maintained across all angles, absolutely no visible numbers text labels frame counters corner marks or annotations anywhere on the image",
+          "negative": "numbers, text, letters, labels, frame numbers, corner marks, annotations, captions, watermarks, signatures, logos, bad anatomy, distorted face, inconsistent character design, lighting mismatch between frames, blurry, low quality",
+          "params": {
+            "即梦/可灵": "直接粘贴，开启「参考图」锁一致性",
+            "Midjourney": "--ar 1:1 --style raw --s 50"
+          },
+          "created_at": 1781476800000,
+          "updated_at": 1781476800000
+        },
+        {
+          "id": "film_character_sheet_3",
+          "name": "角色设定板-三视图+六表情",
+          "category": "character",
+          "scene": "左侧全身三视图，右侧六种基础表情网格",
+          "positive": "Character reference sheet, left-right layout: LEFT section showing full body three-view (front standing, side profile, back view) with unified proportions. RIGHT section showing 2x3 grid with 6 basic expressions: gentle smile, neutral calm, joyful laugh, sad tearful, angry stern, surprised astonished. [角色描述]. [服装]. [发型]. Consistent character across all panels, only expression changes, light warm gray background, professional character design sheet, identical features, no text labels",
+          "negative": "text, labels, numbers, watermarks, blurry, low quality, distorted face, inconsistent features between panels, different clothing",
+          "params": {
+            "即梦/可灵": "直接粘贴，建议开启「参考图」锁角色一致性",
+            "Midjourney": "--ar 3:2 --style raw --s 50"
+          },
+          "created_at": 1781476800000,
+          "updated_at": 1781476800000
+        },
+        {
+          "id": "film_storyboard_4panel",
+          "name": "剧情推演四宫格",
+          "category": "storyboard",
+          "scene": "同一事件的4个连续阶段/情绪递进",
+          "positive": "A 4-panel storyboard sequence in 2x2 grid, showing narrative progression of [事件/场景]: top-left [阶段1描述], top-right [阶段2描述], bottom-left [阶段3描述], bottom-right [阶段4描述]. Consistent character design across all panels, coherent lighting and color palette, uniform light warm gray background, cinematic composition, emotional arc from [情绪A] to [情绪B], film grain texture, clean thin white grid dividers, absolutely no visible numbers text labels",
+          "negative": "numbers, text, labels, frame numbers, annotations, watermarks, bad anatomy, inconsistent character, discontinuous action, blurry",
+          "params": {
+            "即梦/可灵": "建议先写情绪词再填场景",
+            "Midjourney": "--ar 1:1 --style raw --s 75"
+          },
+          "created_at": 1781476800000,
+          "updated_at": 1781476800000
+        },
+        {
+          "id": "film_storyboard_25grid",
+          "name": "25宫格连贯分镜",
+          "category": "storyboard",
+          "scene": "完整场景/动作的25帧连续分镜，5×5网格",
+          "positive": "A 5x5 cinematic storyboard grid, 25 sequential frames showing continuous narrative flow of [主体/场景/动作], naturally divided into 9 story beats. Consistent character and environment across all 25 frames, smooth motion continuity between adjacent frames, uniform cinematic lighting and color palette, light warm gray background, varied shot progression from wide to close-up, professional film storyboard aesthetic, subtle film grain, clean thin white grid dividers, absolutely no visible numbers text labels",
+          "negative": "numbers, text, labels, frame numbers, annotations, watermarks, bad anatomy, inconsistent character, blurry, low quality",
+          "params": {
+            "即梦/可灵": "建议先测试单格效果再生成25格",
+            "Midjourney": "--ar 1:1 --style raw --s 75 --q 2"
+          },
+          "created_at": 1781476800000,
+          "updated_at": 1781476800000
+        },
+        {
+          "id": "film_storyboard_sketch",
+          "name": "手绘分镜稿-2×2铅笔线稿",
+          "category": "storyboard",
+          "scene": "铅笔单线条线稿分镜，2×2布局，标注镜头类型/表演/音效，彩色箭头标注运动轨迹",
+          "positive": "Hand-drawn storyboard sheet, 2x2 grid layout, 4 shots in 9:16 aspect ratio, pencil single-line sketch style, no complex shading or color, focus on character action and shot rhythm. Each shot labeled with shot type (low angle, extreme wide, handheld close-up), performance notes, and sound effects description. Simple colored hand-drawn arrows indicating movement direction. The 4 shots form a complete scene with smooth action logic through shot transitions, clear character movements, emotional progression. [具体镜头内容]. Professional storyboard format, clean layout, readable annotations",
+          "negative": "photorealistic, complex shading, full color painting, digital art style, blurry, low quality, text errors, illegible handwriting",
+          "params": {
+            "即梦/可灵": "直接粘贴，建议用铅笔风格LoRA",
+            "Midjourney": "--ar 9:16 --style raw --s 50"
+          },
+          "created_at": 1781476800000,
+          "updated_at": 1781476800000
+        }
+      ]
+    },
+    {
+      "id": "gpt-image-2",
+      "name": "GPT-Image-2 影视模板库",
+      "type": "prompt",
+      "readonly": false,
+      "system": false,
+      "categories": [
+        {
+          "id": "gpt-character",
+          "name": "角色设定"
+        },
+        {
+          "id": "gpt-scene",
+          "name": "场景设定"
+        },
+        {
+          "id": "gpt-props",
+          "name": "道具设定"
+        },
+        {
+          "id": "gpt-shot",
+          "name": "分镜草图"
+        },
+        {
+          "id": "gpt-style",
+          "name": "风格参考"
+        }
+      ],
+      "items": [
+        {
+          "id": "gpt_c_1",
+          "name": "电影级真人角色肖像",
+          "category": "gpt-character",
+          "scene": "高精度电影级角色肖像，适合主角定妆照",
+          "positive": "Cinematic character portrait of [AGE] [GENDER] [ETHNICITY], [HAIR DESCRIPTION], [EYE COLOR], [DISTINCTIVE FEATURES]. Wearing [COSTUME DESCRIPTION]. [EXPRESSION], [POSE]. Shot on 85mm f/1.4, shallow depth of field, soft bokeh background. Three-point studio lighting with subtle rim light. Photorealistic, hyperdetailed skin texture, natural skin tones. 8K resolution, professional film still quality.",
+          "negative": "deformed face, bad anatomy, extra fingers, harsh lighting, overexposed, low quality, blurry, cartoon, illustration",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_c_2",
+          "name": "角色全身定妆照",
+          "category": "gpt-character",
+          "scene": "角色全身设计参考，适合服装造型确认",
+          "positive": "Full body character design sheet of [CHARACTER NAME], [AGE] [GENDER] [ETHNICITY]. Wearing [FULL COSTUME DETAILS] with [ACCESSORIES]. Standing in neutral pose against [BACKGROUND COLOR] seamless backdrop. Front view, clean studio lighting. Photorealistic, clothing fabric texture visible, professional costume design reference. 8K detail.",
+          "negative": "deformed anatomy, bad proportions, extra limbs, cluttered background, dark shadows, low quality",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_c_3",
+          "name": "角色表情集",
+          "category": "gpt-character",
+          "scene": "6格表情变化参考，适合表演指导",
+          "positive": "Character expression sheet of [CHARACTER DESCRIPTION]. Grid of 6 different expressions: neutral, happy, angry, sad, surprised, determined. Same character, same lighting, consistent face. Clean white background. Photorealistic portrait style, soft diffused lighting. Professional animation character reference sheet.",
+          "negative": "inconsistent faces, different characters, text labels, numbers, distorted expressions, cartoon",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_c_4",
+          "name": "武侠角色",
+          "category": "gpt-character",
+          "scene": "中国武侠风格角色，适合古装武侠片",
+          "positive": "Cinematic wuxia character portrait of [GENDER] martial artist, [AGE], flowing [COLOR] robes with [EMBROIDERY DETAILS]. Long hair [STYLE] in the wind. Holding [WEAPON]. Standing on [LOCATION: mountain cliff/ancient courtyard/bamboo forest]. Golden hour backlight creating dramatic silhouette. Shot on 50mm anamorphic lens, shallow depth of field. Film grain, teal and orange color grading. Chinese wuxia film aesthetic, directed by Zhang Yimou style.",
+          "negative": "modern clothing, urban background, cartoon, anime, bad anatomy, overexposed",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_c_5",
+          "name": "科幻角色",
+          "category": "gpt-character",
+          "scene": "赛博朋克/科幻风格角色设计",
+          "positive": "Cyberpunk character design of [GENDER] [ROLE: hacker/mercenary/scientist], [AGE]. Wearing [HIGH-TECH OUTFIT DESCRIPTION] with [CYBERNETIC/IMPLANT DETAILS]. Neon [COLOR] lighting from below, [COLOR] backlight. Standing in [CYBERPUNK ENVIRONMENT]. Photorealistic, sharp focus on tech details and fabric textures. Blade Runner 2049 aesthetic, cinematic lighting, 8K resolution.",
+          "negative": "fantasy, historical, medieval, cartoon, low tech, bad anatomy, blurry",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_c_6",
+          "name": "古装角色",
+          "category": "gpt-character",
+          "scene": "中国古装剧角色，唐代/宋代风格",
+          "positive": "Historical Chinese costume drama character portrait of [GENDER] noble, [DYNASTY] era. Wearing elaborate [COLOR] silk hanfu with intricate [PATTERN] embroidery. Ornate [HAIR ORNAMENT/CROWN]. Sitting in [ANCIENT SETTING: pavilion/garden/palace]. Soft natural window light, warm candlelight fill. Shot on 85mm f/1.8, shallow depth of field. Photorealistic, fabric silk texture clearly visible. Tang dynasty painting aesthetic.",
+          "negative": "modern, western clothing, casual, cartoon, bad anatomy, plastic skin",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_s_1",
+          "name": "电影级广角场景",
+          "category": "gpt-scene",
+          "scene": "电影开场定场镜头，展示大环境",
+          "positive": "Cinematic establishing wide shot of [LOCATION DESCRIPTION]. [TIME OF DAY], [WEATHER CONDITIONS]. [LIGHTING SETUP]. [ATMOSPHERIC ELEMENTS: fog/mist/dust particles]. Shot on 24mm wide angle lens, deep focus f/8. Anamorphic aspect ratio, film grain, teal and orange color grading. [DIRECTOR STYLE]. 8K resolution, hyperdetailed environment.",
+          "negative": "close-up, portrait, shallow depth of field, cartoon, low quality, overexposed sky",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_s_2",
+          "name": "城市夜景",
+          "category": "gpt-scene",
+          "scene": "夜晚城市外景，霓虹/街灯氛围",
+          "positive": "Cinematic night cityscape of [CITY NAME/TYPE]. [NEON/STREETLIGHT] reflections on wet pavement after rain. [COLOR] neon signs casting [COLOR] glow. Shot from [CAMERA ANGLE: low angle/rooftop/drone perspective]. 35mm lens, long exposure effect on lights. Cyberpunk meets film noir aesthetic. Volumetric fog, atmospheric haze. 8K resolution.",
+          "negative": "daylight, bright sun, empty streets, cartoon, low quality, noise",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_s_3",
+          "name": "自然风光",
+          "category": "gpt-scene",
+          "scene": "壮丽自然景观，国家地理风格",
+          "positive": "Cinematic landscape of [NATURAL SCENE: mountains/ocean/forest/desert]. [TIME OF DAY] with [LIGHTING: golden hour/sunrise/misty morning]. [WEATHER ELEMENT: clouds/fog/sun rays]. Shot on wide angle lens, deep focus. National Geographic documentary style. Rich natural colors, high dynamic range. 8K resolution, breathtaking vista.",
+          "negative": "urban, buildings, people, artificial, cartoon, overexposed, low quality",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_s_4",
+          "name": "室内场景",
+          "category": "gpt-scene",
+          "scene": "室内环境设定，含光源和道具",
+          "positive": "Cinematic interior of [ROOM TYPE: study/living room/throne hall/laboratory]. [ARCHITECTURAL STYLE]. [LIGHTING: candlelight/fireplace/neon/window light]. [KEY PROPS AND FURNITURE]. [COLOR PALETTE]. Shot on 35mm lens, medium depth of field. Warm ambient atmosphere, dust motes in light rays. Interior design magazine quality. 8K.",
+          "negative": "outdoor, empty room, harsh overhead light, cartoon, low quality",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_s_5",
+          "name": "战斗场景",
+          "category": "gpt-scene",
+          "scene": "动作片战斗场景环境设定",
+          "positive": "Cinematic action scene in [LOCATION]. [WEATHER/TIME]. [EFFECTS: dust/smoke/sparks/water spray]. Dynamic composition with [CAMERA MOVEMENT: dutch angle/tracking shot/low angle]. Shot on wide lens with motion blur effect. High contrast dramatic lighting. Hollywood blockbuster action aesthetic. Explosive atmosphere, particles in air. 8K.",
+          "negative": "static, calm, peaceful, empty, cartoon, low quality, underexposed",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_s_6",
+          "name": "赛博朋克场景",
+          "category": "gpt-scene",
+          "scene": "未来科幻城市环境",
+          "positive": "Cyberpunk city environment, [DISTRICT TYPE: street level market/rooftop/megastructure interior]. Neon [COLOR] and [COLOR] holographic advertisements. [WEATHER: rain/fog/smog]. Crowded with [CHARACTER TYPES]. Shot on 35mm anamorphic lens, shallow depth of field on foreground elements. Blade Runner 2049 aesthetic. Volumetric lighting through fog. Rich dark tones with neon accents. 8K.",
+          "negative": "nature, daylight, historical, medieval, clean, sterile, cartoon, low quality",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_p_1",
+          "name": "武器道具",
+          "category": "gpt-props",
+          "scene": "电影级武器道具产品摄影",
+          "positive": "Professional product photography of [WEAPON TYPE: sword/dagger/gun/staff]. [MATERIAL: forged steel/jade/black iron/enchanted crystal]. [DECORATIVE DETAILS: engravings/gems/runes]. Displayed on [SURFACE: black velvet/weathered wood/ancient stone]. Studio lighting: key light from above at 45 degrees, soft fill from front, rim light for edge definition. Macro lens, sharp focus on craftsmanship details. Museum quality artifact photography. Clean dark background.",
+          "negative": "hand holding, person, background clutter, blurry, cartoon, low quality, reflections",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_p_2",
+          "name": "魔法_科技道具",
+          "category": "gpt-props",
+          "scene": "发光/悬浮特效道具展示",
+          "positive": "Professional product photography of [ITEM TYPE: magic orb/holographic device/potion vial/ancient artifact]. [MATERIAL AND GLOW EFFECTS]. [SIZE AND SCALE REFERENCE]. Floating/suspended presentation with [LIGHTING: ethereal glow/internal illumination]. Shot on macro lens with shallow depth of field. Cinematic prop photography, mystical atmosphere. Dark moody background with dramatic rim light. 8K detail.",
+          "negative": "hand, background, plain, cartoon, low quality, overexposed glow",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_p_3",
+          "name": "服饰配件",
+          "category": "gpt-props",
+          "scene": "珠宝/饰品/头冠等服饰道具",
+          "positive": "Fashion product photography of [ACCESSORY TYPE: crown/mask/necklace/ring/bracelet]. [ERA/STYLE]. [MATERIALS: gold/silver/jade/silk/leather]. [GEMSTONE/EMBROIDERY DETAILS]. Displayed on [SURFACE]. Soft diffused studio lighting. Macro detail shot. Luxury brand catalog quality. 8K, hyperdetailed material texture.",
+          "negative": "person wearing, cluttered, cartoon, low quality, dark, blurry",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_p_4",
+          "name": "载具设计",
+          "category": "gpt-props",
+          "scene": "科幻/奇幻载具概念设计",
+          "positive": "Concept art of [VEHICLE TYPE: spaceship/mech/flying car/airship]. [DESIGN STYLE: retro-futuristic/military/alien/elegant]. [MATERIALS AND COLOR SCHEME]. [SIZE INDICATOR: human figure for scale]. Three-quarter view angle. Studio lighting with dramatic rim light. Industrial design concept art style, technical detailing visible. Clean gradient background. 8K.",
+          "negative": "photorealistic, real car, real airplane, cartoon, low quality, cluttered",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_f_1",
+          "name": "特写镜头 (CU)",
+          "category": "gpt-shot",
+          "scene": "面部/物体特写，强调细节和情绪",
+          "positive": "Extreme close-up cinematography of [SUBJECT: face/eyes/hands/object]. [EMOTION/ACTION]. [LIGHTING: dramatic single source/split lighting]. Shallow depth of field f/1.4, soft bokeh. 85mm lens. Film still aesthetic, [MOOD] atmosphere. High contrast. 8K.",
+          "negative": "wide shot, full body, deep focus, cartoon, low quality, flat lighting",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_f_2",
+          "name": "中景镜头 (MS)",
+          "category": "gpt-shot",
+          "scene": "人物腰部以上，兼顾动作和环境",
+          "positive": "Medium shot cinematography. [CHARACTER] [ACTION] in [SETTING]. [LIGHTING SETUP]. [CAMERA: 35mm lens, eye-level angle]. Natural composition, [BACKGROUND ELEMENTS]. Film still, [COLOR GRADING: warm/cool/desaturated]. Cinematic look, 8K.",
+          "negative": "extreme close-up, wide landscape, cartoon, low quality, flat",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_f_3",
+          "name": "全景镜头 (WS)",
+          "category": "gpt-shot",
+          "scene": "大环境定场，人物渺小突出空间感",
+          "positive": "Wide establishing shot cinematography. [CHARACTERS] in [VAST SETTING]. [ACTION SCALE: small figures in grand landscape/epic battle spread/solitary figure]. [LIGHTING: natural/moody/dramatic]. Shot on 24mm wide angle, deep focus. Epic composition showing scale and atmosphere. [DIRECTOR STYLE] reference. Cinematic film still, 8K.",
+          "negative": "close-up, portrait, shallow depth, cartoon, low quality",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_f_4",
+          "name": "动作镜头",
+          "category": "gpt-shot",
+          "scene": "打斗/追逐/动作场面动感瞬间",
+          "positive": "Dynamic action cinematography. [CHARACTER] [FIGHTING STYLE: sword duel/martial arts/gunfight/parkour]. Mid-action freeze frame showing [KEY MOMENT]. [EFFECTS: motion blur on movement/dust kicked up/sparks from impact]. Dutch angle composition for energy. Shot on 24mm wide lens close to action. High contrast dramatic lighting. Hollywood action film aesthetic. 8K.",
+          "negative": "static, posed, calm, cartoon, low quality, dark, blurry face",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_f_5",
+          "name": "过肩镜头 (OTS)",
+          "category": "gpt-shot",
+          "scene": "对话场景，一人肩后拍另一人",
+          "positive": "Over-the-shoulder cinematography. [CHARACTER A] shoulder and back of head in foreground, blurred. [CHARACTER B] facing camera in mid-ground, [EXPRESSION/ACTION]. [SETTING] in background. Shallow depth of field focusing on Character B. 50mm lens. Natural lighting from [DIRECTION]. Intimate conversation mood. Film still quality, 8K.",
+          "negative": "wide shot, both faces sharp, cartoon, low quality, empty background",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_f_6",
+          "name": "低角度仰拍",
+          "category": "gpt-shot",
+          "scene": "英雄视角，角色威严/力量感",
+          "positive": "Low angle hero shot cinematography. [CHARACTER] towering above camera, looking [EXPRESSION: determined/powerful/menacing]. [BACKGROUND: dramatic sky/towering architecture/stars]. [LIGHTING: dramatic backlight creating silhouette/heroic rim light]. Shot from ground level looking up. 16mm wide angle for dramatic perspective. Superhero film aesthetic. Epic, powerful composition. 8K.",
+          "negative": "eye level, high angle, looking down, cartoon, low quality, soft",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_y_1",
+          "name": "水墨中国风",
+          "category": "gpt-style",
+          "scene": "中国传统水墨画风格参考",
+          "positive": "Chinese ink wash painting style (shuimo). [SCENE DESCRIPTION]. Flowing brushstrokes, negative space composition. [COLOR: black ink with subtle [ACCENT COLOR] wash]. Rice paper texture visible. Misty atmosphere. Traditional Chinese landscape painting aesthetic. Elegant, contemplative mood.",
+          "negative": "photorealistic, 3D render, western painting, oil painting, cartoon, sharp lines",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_y_2",
+          "name": "赛博朋克",
+          "category": "gpt-style",
+          "scene": "霓虹/雨夜/高科技低生活风格",
+          "positive": "Cyberpunk aesthetic. [SCENE DESCRIPTION]. Neon [COLOR] and [COLOR] dominating the palette. Rain-slicked surfaces reflecting city lights. Volumetric fog illuminated by holographic advertisements. High contrast, deep shadows, saturated highlights. Blade Runner 2049 style. 8K.",
+          "negative": "nature, daylight, historical, clean, minimal, bright, warm, cartoon",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_y_3",
+          "name": "胶片复古",
+          "category": "gpt-style",
+          "scene": "胶片摄影质感，怀旧色调",
+          "positive": "Vintage film photography aesthetic. [SCENE DESCRIPTION]. Shot on [FILM STOCK: Kodachrome/Portra 400/Tri-X]. Natural light only. [ERA: 1970s/1980s/1990s] period look. Visible film grain, slight color shift to [WARM/COOL] tones. Light leaks and subtle vignette. Nostalgic, authentic analog photography feel.",
+          "negative": "digital sharp, clean, modern, CGI, HDR, cartoon, sterile",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_y_4",
+          "name": "黑暗奇幻",
+          "category": "gpt-style",
+          "scene": "黑暗幻想风格，哥特/魂系美学",
+          "positive": "Dark fantasy aesthetic. [SCENE DESCRIPTION]. Moody, atmospheric lighting with [LIGHT SOURCE: moonlight/torchlight/candle]. Deep shadows, muted color palette with [ACCENT COLOR] highlights. Gothic architectural elements. Volumetric fog at ground level. Dark souls/Elden Ring inspired visual style. Cinematic composition, 8K.",
+          "negative": "bright, cheerful, modern, sci-fi, cartoon, clean, minimal, white",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_y_5",
+          "name": "宫崎骏动画风",
+          "category": "gpt-style",
+          "scene": "吉卜力/宫崎骏风格参考",
+          "positive": "Studio Ghibli inspired animation art style. [SCENE DESCRIPTION]. Soft, painterly backgrounds with detailed foreground elements. Warm, nostalgic color palette. Gentle natural lighting. [CHARACTER: simple yet expressive design]. Blue sky with fluffy clouds. Miyazaki film aesthetic, hand-drawn animation cel look.",
+          "negative": "photorealistic, 3D, dark, gritty, cyberpunk, horror, sharp, digital",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        },
+        {
+          "id": "gpt_y_6",
+          "name": "史诗奇幻",
+          "category": "gpt-style",
+          "scene": "指环王式宏大奇幻风格",
+          "positive": "Epic fantasy cinematic aesthetic. [SCENE DESCRIPTION]. Sweeping landscape with [FANTASTICAL ELEMENT]. Dramatic sky with [LIGHTING: storm clouds parting/golden rays/aurora]. Lord of the Rings inspired visual grandeur. Rich, saturated colors, high dynamic range. Wide angle composition emphasizing scale. Film still quality, 8K.",
+          "negative": "modern, urban, sci-fi, minimal, cartoon, low quality, flat",
+          "params": {},
+          "created_at": 1780690000000,
+          "updated_at": 1780690000000
+        }
+      ]
+    }
+  ],
+  "updated_at": 1780691219419
+}
